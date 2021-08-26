@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     public float JumpForce = 5f;
     //rigidbody del personaje que usare para saltar
     private Rigidbody2D rigidBody;
+    //variable para detectar la capa del suelo
+    public LayerMask GroundLayer;
+
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -31,6 +34,24 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         //f = m * a
-        rigidBody.AddForce(UnityEngine.Vector2.up * JumpForce, ForceMode2D.Impulse);
+        if (IsTouchingTheGround() == true) 
+        {
+
+            rigidBody.AddForce(UnityEngine.Vector2.up * JumpForce, ForceMode2D.Impulse);
+        }
+    }
+
+    //metodo para validar si el personaje toca el suelo o no
+    bool IsTouchingTheGround() 
+    {
+        //trazare un raycast hacia abajo para veirificar si toco el suelo hasta un maximo de 20cm
+        if (Physics2D.Raycast(this.transform.position, UnityEngine.Vector2.down, 0.8f, GroundLayer))
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
     }
 }
