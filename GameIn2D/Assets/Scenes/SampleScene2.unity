@@ -200,6 +200,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5568723232252585246}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1321877675 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5568723230932018613, guid: 9d30bb072baa5cd40ba7957cdd793df7,
+    type: 3}
+  m_PrefabInstance: {fileID: 5568723232252585246}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1321877678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,10 +218,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8700a7b110f05aa4186d7b663595800c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpForce: 5
+  JumpForce: 7
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  AnimatorPlayer: {fileID: 1321877675}
 --- !u!1001 &1157529634270216809
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidBody;
     //variable para detectar la capa del suelo
     public LayerMask GroundLayer;
+    //variable para manejar las animaciones
+    public Animator AnimatorPlayer;
 
     private void Awake()
     {
@@ -19,7 +21,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        
+        AnimatorPlayer.SetBool("IsGrounded",true);
     }
     // Update is called once per frame
     private void Update()
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour
             //aqi el usuario acaba de pulsar la tecla espacio
             Jump();
         }
+        AnimatorPlayer.SetBool("IsGrounded", IsTouchingTheGround());
     }
 
     private void Jump()
