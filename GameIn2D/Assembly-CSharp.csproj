@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Curso Unity/Juego-en-2D-Utilizando-Unity/GameIn2D/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

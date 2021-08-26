@@ -218,11 +218,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8700a7b110f05aa4186d7b663595800c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpForce: 7
+  JumpForce: 5
   GroundLayer:
     serializedVersion: 2
     m_Bits: 256
   AnimatorPlayer: {fileID: 1321877675}
+  WalkSpeed: 1.5
 --- !u!1001 &1157529634270216809
 PrefabInstance:
   m_ObjectHideFlags: 0
