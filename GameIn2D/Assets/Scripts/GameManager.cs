@@ -12,10 +12,23 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
+    //variable que hace referencia al manager
+    public static GameManager SharedInstance;
+
     //variable para indicar en que estado se encuentra el juego
     public GameState CurrentGameState = GameState.Menu;
+
+    private void Awake()
+    {
+        SharedInstance = this;
+    }
+    private void Start()
+    {
+        IniciarPartida();
+    }
+
     //metodo para iniciar el juego
-    public void InciarPartida() 
+    public void IniciarPartida() 
     {
         SetGameState(GameState.InGame);
     }
