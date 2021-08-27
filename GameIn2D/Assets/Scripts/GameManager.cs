@@ -24,7 +24,18 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        IniciarPartida();
+        BackToMenu();
+    }
+    private void Update()
+    {
+        if (Input.GetButton("Start")) 
+        {
+            IniciarPartida();
+        }
+        if (Input.GetButton("Pause"))
+        {
+            BackToMenu();
+        }
     }
 
     //metodo para iniciar el juego

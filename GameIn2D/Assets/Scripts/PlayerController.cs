@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         //Solo se podra mover si el Modo de Juego es InGame
         if (GameManager.SharedInstance.CurrentGameState == GameState.InGame)
         {
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetButton("HorizontalPositive"))
             {
                 if (rigidBody.velocity.x < WalkSpeed)
                 {
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
                     transform.localScale = new UnityEngine.Vector2(1, 1);
                 }
             }
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetButton("HorizontalNegative"))
             {
                 if (rigidBody.velocity.x > -WalkSpeed)
                 {
