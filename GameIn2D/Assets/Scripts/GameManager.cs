@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    //metodo para iniciar el juego
+    public void InciarPartida() 
     {
-        
     }
-
-    // Update is called once per frame
-    void Update()
+    //metodo que se llamara al morir
+    public void GameOver() 
     {
-        
+    }
+    //metodo que llamara para volver al menu
+    public void BackToMenu() 
+    {
     }
 }
