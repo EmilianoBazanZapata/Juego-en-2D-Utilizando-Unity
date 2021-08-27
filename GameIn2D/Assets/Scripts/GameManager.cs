@@ -28,20 +28,29 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetButton("Start")) 
+        if (Input.GetButton("Start"))
         {
-            IniciarPartida();
+            StartGame();
         }
         if (Input.GetButton("Pause"))
         {
             BackToMenu();
         }
+        if (Input.GetButton("Restart") && CurrentGameState == GameState.GameOver)
+        {
+            RestartGame();
+        }
     }
-
     //metodo para iniciar el juego
-    public void IniciarPartida() 
+    public void StartGame()
     {
         SetGameState(GameState.InGame);
+    }
+    //metodo para reiniciar el juego
+    public void RestartGame() 
+    {
+        SetGameState(GameState.InGame);
+        PlayerController.SharedInstance.StartGame();
     }
     //metodo que se llamara al morir
     public void GameOver() 

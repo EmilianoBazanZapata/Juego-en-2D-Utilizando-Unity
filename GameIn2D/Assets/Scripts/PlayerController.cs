@@ -17,17 +17,24 @@ public class PlayerController : MonoBehaviour
     public float WalkSpeed = 1.5f;
     //referencia a una instancia unica de la clase
     public static PlayerController SharedInstance;
+    //variable para almacenar la posicion del personaje
+    private UnityEngine.Vector3 StartPosition;
 
     private void Awake()
     {
         SharedInstance = this;
         rigidBody = GetComponent<Rigidbody2D>();
+        //posicion inicial del personaje
+        StartPosition = this.transform.position;
     }
-    // Start is called before the first frame update
-    private void Start()
+
+    public void StartGame()
     {
         AnimatorPlayer.SetBool("IsGrounded",true);
+        //asigno la posicion inicial del personaje cada vez que reinciamos el juego
+        this.transform.position = StartPosition;
     }
+
     // Update is called once per frame
     private void Update()
     {
@@ -42,6 +49,7 @@ public class PlayerController : MonoBehaviour
             AnimatorPlayer.SetBool("IsGrounded", IsTouchingTheGround());
         }
     }
+
     private void FixedUpdate()
     {
         //la velocidad en el eje x ira cambiando respetando la velocidad maxima
@@ -92,7 +100,7 @@ public class PlayerController : MonoBehaviour
             return false;
         }
     }
-
+    //metodo que se usara para matar al jugador
     public void Kill() 
     {
         GameManager.SharedInstance.GameOver();
