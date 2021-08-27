@@ -28,31 +28,39 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        //Solo se podra saltar si el Modo de Juego es InGame
+        if (GameManager.SharedInstance.CurrentGameState == GameState.InGame) 
         {
-            //aqi el usuario acaba de pulsar la tecla espacio
-            Jump();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                //aqi el usuario acaba de pulsar la tecla espacio
+                Jump();
+            }
+            AnimatorPlayer.SetBool("IsGrounded", IsTouchingTheGround());
         }
-        AnimatorPlayer.SetBool("IsGrounded", IsTouchingTheGround());
     }
     private void FixedUpdate()
     {
         //la velocidad en el eje x ira cambiando respetando la velocidad maxima
         //la velocidad en el eje y sera la que acumule al caminar
-        if (Input.GetKey(KeyCode.D))
+        //Solo se podra mover si el Modo de Juego es InGame
+        if (GameManager.SharedInstance.CurrentGameState == GameState.InGame)
         {
-            if (rigidBody.velocity.x < WalkSpeed)
+            if (Input.GetKey(KeyCode.D))
             {
-                rigidBody.velocity = new UnityEngine.Vector2(WalkSpeed, rigidBody.velocity.y);
-                transform.localScale = new UnityEngine.Vector2(1, 1);
+                if (rigidBody.velocity.x < WalkSpeed)
+                {
+                    rigidBody.velocity = new UnityEngine.Vector2(WalkSpeed, rigidBody.velocity.y);
+                    transform.localScale = new UnityEngine.Vector2(1, 1);
+                }
             }
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            if (rigidBody.velocity.x > -WalkSpeed)
+            if (Input.GetKey(KeyCode.A))
             {
-                rigidBody.velocity = new UnityEngine.Vector2(-WalkSpeed, rigidBody.velocity.y);
-                transform.localScale = new UnityEngine.Vector2(-1,1);
+                if (rigidBody.velocity.x > -WalkSpeed)
+                {
+                    rigidBody.velocity = new UnityEngine.Vector2(-WalkSpeed, rigidBody.velocity.y);
+                    transform.localScale = new UnityEngine.Vector2(-1, 1);
+                }
             }
         }
     }
