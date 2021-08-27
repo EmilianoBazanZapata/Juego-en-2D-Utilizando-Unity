@@ -15,9 +15,12 @@ public class PlayerController : MonoBehaviour
     public Animator AnimatorPlayer;
     //fuerza que aplico para caminar
     public float WalkSpeed = 1.5f;
+    //referencia a una instancia unica de la clase
+    public static PlayerController SharedInstance;
 
     private void Awake()
     {
+        SharedInstance = this;
         rigidBody = GetComponent<Rigidbody2D>();
     }
     // Start is called before the first frame update
@@ -88,5 +91,10 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void Kill() 
+    {
+        GameManager.SharedInstance.GameOver();
     }
 }
