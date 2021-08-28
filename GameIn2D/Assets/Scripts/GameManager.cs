@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         }
         else if (NewGameState == GameState.InGame)
         {
-            //codigo para juegar
+            //codigo para jugar
         }
         else if (NewGameState == GameState.GameOver)
         {
