@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3939227460080872161}
   - component: {fileID: 8088574311250745696}
   - component: {fileID: 5059303713829768594}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: M_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 632971168694108350}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataform_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 5972223453916620036}
   - component: {fileID: 2384859268374952165}
   - component: {fileID: 6081512521434414821}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: M_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

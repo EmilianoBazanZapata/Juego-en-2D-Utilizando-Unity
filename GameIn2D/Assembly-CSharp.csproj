@@ -66,6 +66,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\KillZone.cs" />
+    <Compile Include="Assets\Scripts\LevelBlock.cs" />
+    <Compile Include="Assets\Scripts\LevelGenerator.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <None Include="Assets\Prefabs\Medieval\pixel_snapping_README.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
