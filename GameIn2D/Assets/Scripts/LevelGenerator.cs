@@ -15,9 +15,7 @@ public class LevelGenerator : MonoBehaviour
     }
     private void Start() 
     {
-        AddLevelBlock();
-        AddLevelBlock();
-        AddLevelBlock();
+        GenerateInitialBlock();
     }
     public void AddLevelBlock() 
     {
@@ -41,7 +39,7 @@ public class LevelGenerator : MonoBehaviour
         Vector3 Correction = new Vector3(SpawPosition.x - CurrentBlock.StartPoint.position.x,
                                          SpawPosition.y - CurrentBlock.StartPoint.position.y, 0);
 
-        Debug.Log(Correction);
+        //Debug.Log(Correction);
         CurrentBlock.transform.position = Correction;
         CurrentBlocks.Add(CurrentBlock);
 
@@ -56,6 +54,9 @@ public class LevelGenerator : MonoBehaviour
     }
     public void GenerateInitialBlock() 
     {
-
+        for (int i = 0; i < 2; i++)
+        {
+            AddLevelBlock();
+        }
     }
 }
