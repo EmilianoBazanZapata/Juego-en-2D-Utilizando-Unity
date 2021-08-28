@@ -46,15 +46,21 @@ public class LevelGenerator : MonoBehaviour
     }
     public void RemoveLevelBlock() 
     {
-
+        //elimino el Bloque mas Viejo
+        LevelBlock OldestBlock = CurrentBlocks[0];
+        CurrentBlocks.Remove(OldestBlock);
+        Destroy(OldestBlock.gameObject);
     }
     public void RemoveAllThrBlock()
     {
-
+        while (CurrentBlocks.Count > 0) 
+        {
+            RemoveLevelBlock();
+        }
     }
     public void GenerateInitialBlock() 
     {
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {
             AddLevelBlock();
         }
