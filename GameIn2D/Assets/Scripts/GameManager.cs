@@ -18,6 +18,13 @@ public class GameManager : MonoBehaviour
     //variable para indicar en que estado se encuentra el juego
     public GameState CurrentGameState = GameState.Menu;
 
+    //referencia al canvas del menu
+    public Canvas MenuCanvas;
+    //referencia al canvas del juego
+    public Canvas GameCanvas;
+    //referencia al canvas del gameover
+    public Canvas GameOverCanvas;
+
     private void Awake()
     {
         SharedInstance = this;
@@ -81,14 +88,24 @@ public class GameManager : MonoBehaviour
         if (NewGameState == GameState.Menu) 
         {
             //codigo para mostrar el menu
+            //aqui activare el canvas
+            MenuCanvas.enabled = true;
+            GameCanvas.enabled = false;
+            GameOverCanvas.enabled = false;
         }
         else if (NewGameState == GameState.InGame)
         {
             //codigo para jugar
+            MenuCanvas.enabled = false;
+            GameCanvas.enabled = true;
+            GameOverCanvas.enabled = false;
         }
         else if (NewGameState == GameState.GameOver)
         {
             //codigo para mostrar la escena de muerte
+            MenuCanvas.enabled = false;
+            GameCanvas.enabled = false;
+            GameOverCanvas.enabled = true;
         }
 
         //asignamos el estado de juego actual desde el parametro
