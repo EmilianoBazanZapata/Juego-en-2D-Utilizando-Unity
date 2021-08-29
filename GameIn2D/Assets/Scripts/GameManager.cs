@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
             LevelGenerator.SharedInstance.RemoveAllTheBlock();
             LevelGenerator.SharedInstance.GenerateInitialBlock();
         }
+        //despues de generar el bloque genero el jugador
+        PlayerController.SharedInstance.StartGame();
 
     }
     //metodo para reiniciar el juego
