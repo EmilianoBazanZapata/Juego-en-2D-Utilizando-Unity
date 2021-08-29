@@ -45,7 +45,17 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         SetGameState(GameState.InGame);
-        CameraFollow.SharedInstance.ResetCameraPosition();
+        //CameraFollow.SharedInstance.ResetCameraPosition();
+        GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+        CameraFollow cameraFollow = camera.GetComponent<CameraFollow>();
+        cameraFollow.ResetCameraPosition();
+        //si el jugador no supera la distancia de 13 el primer bloque sera el mismo
+        if (PlayerController.SharedInstance.transform.position.x > 13) 
+        {
+            LevelGenerator.SharedInstance.RemoveAllTheBlock();
+            LevelGenerator.SharedInstance.GenerateInitialBlock();
+        }
+
     }
     //metodo para reiniciar el juego
     public void RestartGame() 
