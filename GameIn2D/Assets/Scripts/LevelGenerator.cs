@@ -51,7 +51,7 @@ public class LevelGenerator : MonoBehaviour
         CurrentBlocks.Remove(OldestBlock);
         Destroy(OldestBlock.gameObject);
     }
-    public void RemoveAllThrBlock()
+    public void RemoveAllTheBlock()
     {
         while (CurrentBlocks.Count > 0) 
         {

@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         SetGameState(GameState.InGame);
+        CameraFollow.SharedInstance.ResetCameraPosition();
     }
     //metodo para reiniciar el juego
     public void RestartGame() 
