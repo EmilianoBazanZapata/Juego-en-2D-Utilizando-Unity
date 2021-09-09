@@ -482,6 +482,7 @@ MonoBehaviour:
   - {fileID: 8973878587654439696, guid: ea17e10fd7c888e4cb0f9289842e339e, type: 3}
   - {fileID: 2131838121348182677, guid: 2831f8745c31d75419ff213cb279455c, type: 3}
   - {fileID: 1077443125889831893, guid: 25dc8b4d5d13dec4d948427c06352136, type: 3}
+  - {fileID: 8450946056258095224, guid: 1204ec66a2810aa4299a75f89c431d0f, type: 3}
   LevelStartPoint: {fileID: 1095855287}
   CurrentBlocks: []
 --- !u!1 &759202664

@@ -7,7 +7,8 @@ public enum GameState
 {
     Menu,
     InGame,
-    GameOver
+    GameOver,
+    Pause
 }
 
 public class GameManager : MonoBehaviour
@@ -24,6 +25,8 @@ public class GameManager : MonoBehaviour
     public Canvas GameCanvas;
     //referencia al canvas del gameover
     public Canvas GameOverCanvas;
+    //referencia la canvas de pausa
+    public Canvas PauseCanvas;
 
     private void Awake()
     {
@@ -35,13 +38,13 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetButton("Start"))
+        /*if (Input.GetButton("Start"))
         {
             StartGame();
-        }
+        }*/
         if (Input.GetButton("Pause"))
         {
-            BackToMenu();
+           Pause();
         }
         if (Input.GetButton("Restart") && CurrentGameState == GameState.GameOver)
         {
@@ -82,6 +85,14 @@ public class GameManager : MonoBehaviour
     {
         SetGameState(GameState.Menu);
     }
+    public void Pause()
+    {
+        SetGameState(GameState.Pause);
+    }
+    public void ContinueGame()
+    {
+        SetGameState(GameState.InGame);
+    }
     //metodo encargado de cambiar el estado del juego
     private void SetGameState(GameState NewGameState) 
     {
@@ -92,6 +103,7 @@ public class GameManager : MonoBehaviour
             MenuCanvas.enabled = true;
             GameCanvas.enabled = false;
             GameOverCanvas.enabled = false;
+            PauseCanvas.enabled = false;
         }
         else if (NewGameState == GameState.InGame)
         {
@@ -99,6 +111,7 @@ public class GameManager : MonoBehaviour
             MenuCanvas.enabled = false;
             GameCanvas.enabled = true;
             GameOverCanvas.enabled = false;
+            PauseCanvas.enabled = false;
         }
         else if (NewGameState == GameState.GameOver)
         {
@@ -106,6 +119,15 @@ public class GameManager : MonoBehaviour
             MenuCanvas.enabled = false;
             GameCanvas.enabled = false;
             GameOverCanvas.enabled = true;
+            PauseCanvas.enabled = false;
+        }
+        else if(NewGameState == GameState.Pause)
+        {
+            //codigo para mostrar el menu de pausa
+            MenuCanvas.enabled = false;
+            GameCanvas.enabled = false;
+            GameOverCanvas.enabled = false;
+            PauseCanvas.enabled = true;
         }
 
         //asignamos el estado de juego actual desde el parametro
