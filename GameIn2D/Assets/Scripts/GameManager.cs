@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System.Diagnostics;
+using System.Net.Mime;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 //enumerado
 //posibles estado del juego
 public enum GameState 
@@ -46,10 +49,10 @@ public class GameManager : MonoBehaviour
         {
            Pause();
         }
-        if (Input.GetButton("Restart") && CurrentGameState == GameState.GameOver)
-        {
-            RestartGame();
-        }
+        // if (Input.GetButton("Restart") && CurrentGameState == GameState.GameOver)
+        // {
+        //     RestartGame();
+        // }
     }
     //metodo para iniciar el juego
     public void StartGame()
@@ -89,9 +92,19 @@ public class GameManager : MonoBehaviour
     {
         SetGameState(GameState.Pause);
     }
+    //metodo para continuar el juego
     public void ContinueGame()
     {
         SetGameState(GameState.InGame);
+    }
+    //metodo para finalizar la aplicacion
+    public void QuitGame()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
     }
     //metodo encargado de cambiar el estado del juego
     private void SetGameState(GameState NewGameState) 
