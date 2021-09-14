@@ -6,6 +6,8 @@ public class Collectable : MonoBehaviour
 {
     //variable para saber si la variable fue recogida o no
     bool IsCollected = false;
+    //falor de los coleccionables
+    public float value = 0;
     private void Start() {
         Show();    
     }
@@ -40,5 +42,7 @@ public class Collectable : MonoBehaviour
         {
             Collect();
         }
+        //pasamos el valor de loa moneda al metodo contador 
+        GameManager.SharedInstance.CollectObject(value);
     }
 }

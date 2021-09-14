@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     public Canvas GameOverCanvas;
     //referencia la canvas de pausa
     public Canvas PauseCanvas;
+    //cantidad de coleccionales recogidos
+    public float CollectedObjects = 0;
 
     private void Awake()
     {
@@ -70,6 +72,7 @@ public class GameManager : MonoBehaviour
         }
         //despues de generar el bloque genero el jugador
         PlayerController.SharedInstance.StartGame();
+        this.CollectedObjects = 0f;
 
     }
     //metodo para reiniciar el juego
@@ -145,5 +148,10 @@ public class GameManager : MonoBehaviour
 
         //asignamos el estado de juego actual desde el parametro
         this.CurrentGameState = NewGameState;
+    }
+    public void CollectObject(float ObjectValue)
+    {
+        this.CollectedObjects += ObjectValue;
+        UnityEngine.Debug.Log("recogimos : " + CollectedObjects);
     }
 }
