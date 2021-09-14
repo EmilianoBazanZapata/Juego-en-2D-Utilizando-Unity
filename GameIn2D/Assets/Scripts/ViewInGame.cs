@@ -8,17 +8,23 @@ public class ViewInGame : MonoBehaviour
     //etiqueta para ver la puntuacion actual
     public Text CollectableLabel;
 
-    public Text ScoreLabel;
+    public Text DistanceLabel;
 
-    public Text MaxScoreLabel;
+    public Text MaxDistanceLabel;
     private void Update()
     {
-        if (GameManager.SharedInstance.CurrentGameState == GameState.InGame) 
+        if (GameManager.SharedInstance.CurrentGameState == GameState.InGame)
         {
-            float CurrentObjects  = GameManager.SharedInstance.CollectedObjects;
+            float CurrentObjects = GameManager.SharedInstance.CollectedObjects;
             //mostrare en el canvas la cantidad de monedas recogidas
-            this.CollectableLabel.text = CurrentObjects.ToString(); 
+            this.CollectableLabel.text = CurrentObjects.ToString();
 
+        }
+        else if (GameManager.SharedInstance.CurrentGameState == GameState.GameOver)
+        {
+            float CurrentObjects = GameManager.SharedInstance.CollectedObjects;
+            //mostrare en el canvas la cantidad de monedas recogidas
+            this.CollectableLabel.text = CurrentObjects.ToString();
         }
     }
 }
