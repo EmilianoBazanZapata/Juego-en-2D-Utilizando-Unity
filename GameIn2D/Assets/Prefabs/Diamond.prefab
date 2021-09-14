@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4451063458942403617}
   - component: {fileID: 4451063458942403616}
   - component: {fileID: 4451063458942403647}
-  - component: {fileID: 1732458187636191938}
+  - component: {fileID: 6458167328812370257}
+  - component: {fileID: 114670320795153518}
   m_Layer: 0
   m_Name: Diamond
   m_TagString: Cellectable
@@ -100,8 +101,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!60 &1732458187636191938
-PolygonCollider2D:
+--- !u!58 &6458167328812370257
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -113,37 +114,18 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.27, y: 3.48}
-    newSize: {x: 4.27, y: 3.48}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 1.9449999, y: -0.25}
-      - {x: 2.135, y: -0.06}
-      - {x: 2.135, y: 0.04}
-      - {x: 1.865, y: 0.37}
-      - {x: 1.755, y: 0.5}
-      - {x: 1.295, y: 1.04}
-      - {x: 1.265, y: 1.06}
-      - {x: -0.515, y: 1.06}
-      - {x: -0.565, y: 1.01}
-      - {x: -0.905, y: 0.61}
-      - {x: -1.345, y: 0.099999994}
-      - {x: -1.355, y: 0.17}
-      - {x: -1.555, y: 0.02}
-      - {x: -1.555, y: -0.07}
-      - {x: -1.365, y: -0.21}
-      - {x: -1.3249999, y: -0.13}
-      - {x: -0.695, y: -0.75}
-      - {x: -0.275, y: -1.16}
-      - {x: 0.325, y: -1.74}
-      - {x: 0.415, y: -1.74}
-      - {x: 0.695, y: -1.4699999}
-      - {x: 1.105, y: -1.0699999}
+  m_Offset: {x: 0.33619025, y: -0.36980847}
+  serializedVersion: 2
+  m_Radius: 1.4290009
+--- !u!114 &114670320795153518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4451063458942403646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d832f035bbdf67e49a15c8196c5d6d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
