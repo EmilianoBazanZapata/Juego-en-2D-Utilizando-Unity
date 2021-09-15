@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         this.transform.position = StartPosition;
         HealtPoints = 100;
         ManaPoints = 50;
-        //StartCoroutine("TirePlayer");
+        StartCoroutine("TirePlayer");
     }
     //corrutina para restar vida al jugador
     IEnumerator TirePlayer()
@@ -157,5 +157,16 @@ public class PlayerController : MonoBehaviour
         {
             this.ManaPoints  = 100;
         }
+    }
+
+    //metodo para retornar el valor de vida
+    public int GetHealth()
+    {
+        return this.HealtPoints;
+    }
+    //metodo para retornar el valor de mana inicial
+    public int GetMana()
+    {
+        return this.ManaPoints;
     }
 }
