@@ -16,7 +16,7 @@ public class Collectable : MonoBehaviour
     //variable para saber si la variable fue recogida o no
     bool IsCollected = false;
     //falor de los coleccionables
-    public float value = 0;
+    public int value = 0;
     private void Start()
     {
         Show();
