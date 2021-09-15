@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Diagnostics;
+using System.Numerics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class PlayerController : MonoBehaviour
     //variable para manejar las animaciones
     public Animator AnimatorPlayer;
     //fuerza que aplico para caminar
-    public float WalkSpeed = 1.5f;
+    public float WalkSpeed = 4.0f;
     //referencia a una instancia unica de la clase
     public static PlayerController SharedInstance;
     //variable para almacenar la posicion del personaje
@@ -35,8 +36,19 @@ public class PlayerController : MonoBehaviour
         AnimatorPlayer.SetBool("IsGrounded", true);
         //asigno la posicion inicial del personaje cada vez que reinciamos el juego
         this.transform.position = StartPosition;
-        HealtPoints = 50;
+        HealtPoints = 100;
         ManaPoints = 50;
+        //StartCoroutine("TirePlayer");
+    }
+    //corrutina para restar vida al jugador
+    IEnumerator TirePlayer()
+    {
+        while(this.HealtPoints > 15)
+        {
+            this.HealtPoints --;
+            yield return new  WaitForSeconds(3.5f);
+        }
+        yield return null;
     }
 
     // Update is called once per frame
@@ -62,6 +74,7 @@ public class PlayerController : MonoBehaviour
         if (GameManager.SharedInstance.CurrentGameState == GameState.InGame)
         {
             float CurrentSpeed = (WalkSpeed - 1.5f) * this.HealtPoints / 100.0f;
+            //UnityEngine.Debug.Log(CurrentSpeed);
             if (Input.GetButton("HorizontalPositive"))
             {
                 if (rigidBody.velocity.x < CurrentSpeed)

@@ -17,6 +17,7 @@ public class ViewInGame : MonoBehaviour
         {
             float CurrentObjects = GameManager.SharedInstance.CollectedObjects;
             //mostrare en el canvas la cantidad de monedas recogidas
+            //UnityEngine.Debug.Log(CurrentObjects);
             this.CollectableLabel.text = CurrentObjects.ToString();
             //mostrare la distancia recorrida
             float TraveledDistance = PlayerController.SharedInstance.GetDistance();
