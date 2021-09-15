@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     public void StartGame()
     {
-        AnimatorPlayer.SetBool("IsGrounded",true);
+        AnimatorPlayer.SetBool("IsGrounded", true);
         //asigno la posicion inicial del personaje cada vez que reinciamos el juego
         this.transform.position = StartPosition;
     }
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         //Solo se podra saltar si el Modo de Juego es InGame
-        if (GameManager.SharedInstance.CurrentGameState == GameState.InGame) 
+        if (GameManager.SharedInstance.CurrentGameState == GameState.InGame)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
     {
         //f = m * a
 
-        if (IsTouchingTheGround() == true) 
+        if (IsTouchingTheGround() == true)
         {
 
             rigidBody.AddForce(UnityEngine.Vector2.up * JumpForce, ForceMode2D.Impulse);
@@ -88,21 +88,36 @@ public class PlayerController : MonoBehaviour
     }
 
     //metodo para validar si el personaje toca el suelo o no
-    bool IsTouchingTheGround() 
+    bool IsTouchingTheGround()
     {
-        //trazare un raycast hacia abajo para veirificar si toco el suelo hasta un maximo de 20cm
+        //trazare un raycast hacia abajo para veirificar si toco el suelo hasta un maximo de 80cm
         if (Physics2D.Raycast(this.transform.position, UnityEngine.Vector2.down, 0.8f, GroundLayer))
         {
             return true;
         }
-        else 
+        else
         {
             return false;
         }
     }
     //metodo que se usara para matar al jugador
-    public void Kill() 
+    public void Kill()
     {
         GameManager.SharedInstance.GameOver();
+        //almacenare la distancia maxima recorrida por primera vez que en este caso de 0 
+        float CurrentMaxDistance = PlayerPrefs.GetFloat("MaxDistance", 0);
+        if (CurrentMaxDistance < this.GetDistance())
+        {
+            //si la distancia al morir es mayor que 0 tenemos un nuevo record
+            PlayerPrefs.SetFloat("MaxDistance", this.GetDistance());
+        }
+    }
+    //metodo para calcular la distancia recorrida
+    public float GetDistance()
+    {                                                         //inicio
+        float TraveledDistance = UnityEngine.Vector2.Distance(new UnityEngine.Vector2(StartPosition.x, 0),
+                                                              //final
+                                                              new UnityEngine.Vector2(this.transform.position.x, 0));
+        return TraveledDistance;//this.transfomr.x - startposition.x
     }
 }

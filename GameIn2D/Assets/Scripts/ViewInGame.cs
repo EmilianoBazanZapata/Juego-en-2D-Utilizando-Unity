@@ -18,6 +18,14 @@ public class ViewInGame : MonoBehaviour
             float CurrentObjects = GameManager.SharedInstance.CollectedObjects;
             //mostrare en el canvas la cantidad de monedas recogidas
             this.CollectableLabel.text = CurrentObjects.ToString();
+            //mostrare la distancia recorrida
+            float TraveledDistance = PlayerController.SharedInstance.GetDistance();
+                                                                        //asi solo mostrare un deciaml
+            this.DistanceLabel.text = "Distancia \n" + TraveledDistance.ToString("f1");
+
+            float MaxDistance = PlayerPrefs.GetFloat("MaxDistance",0);
+            //actualizo la nueva distancia maxima
+            this.MaxDistanceLabel.text = "Distancia Maxima \n" + MaxDistance.ToString("f1");
 
         }
         else if (GameManager.SharedInstance.CurrentGameState == GameState.GameOver)
