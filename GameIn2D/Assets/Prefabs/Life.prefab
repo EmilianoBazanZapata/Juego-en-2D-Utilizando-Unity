@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 594883192853920678}
   - component: {fileID: 594883192853920679}
+  - component: {fileID: 114252157657690888}
+  - component: {fileID: 2974120977356033053}
   m_Layer: 0
   m_Name: Life
   m_TagString: Untagged
@@ -79,3 +81,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &114252157657690888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594883192853920680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d832f035bbdf67e49a15c8196c5d6d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 0
+  value: 3
+--- !u!58 &2974120977356033053
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594883192853920680}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.01, y: -0.32}
+  serializedVersion: 2
+  m_Radius: 1.0514176

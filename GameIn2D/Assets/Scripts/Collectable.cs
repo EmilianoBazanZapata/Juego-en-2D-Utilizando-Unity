@@ -2,14 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CollectableType
+{
+    HealtPotion,
+    ManaPotion,
+    Money
+}
+
+
 public class Collectable : MonoBehaviour
 {
+    public CollectableType Type;
     //variable para saber si la variable fue recogida o no
     bool IsCollected = false;
     //falor de los coleccionables
     public float value = 0;
-    private void Start() {
-        Show();    
+    private void Start()
+    {
+        Show();
     }
     //metodo para activar la moneda
     private void Show()
@@ -38,11 +48,23 @@ public class Collectable : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "King")
+        if (other.tag == "King")
         {
             Collect();
         }
         //pasamos el valor de loa moneda al metodo contador 
-        GameManager.SharedInstance.CollectObject(value);
+        switch (this.Type)
+        {
+            case CollectableType.Money:
+                GameManager.SharedInstance.CollectObject(value);
+                break;
+            case CollectableType.HealtPotion:
+                PlayerController.SharedInstance.CollectHealt(value);
+                break;
+             case CollectableType.ManaPotion:
+                PlayerController.SharedInstance.CollectMana(value);
+                break;
+        }
+
     }
 }

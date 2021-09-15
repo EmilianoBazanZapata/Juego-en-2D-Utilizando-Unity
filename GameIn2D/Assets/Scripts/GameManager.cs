@@ -152,6 +152,6 @@ public class GameManager : MonoBehaviour
     public void CollectObject(float ObjectValue)
     {
         this.CollectedObjects += ObjectValue;
-        UnityEngine.Debug.Log("recogimos : " + CollectedObjects);
+        //UnityEngine.Debug.Log("recogimos : " + CollectedObjects);
     }
 }

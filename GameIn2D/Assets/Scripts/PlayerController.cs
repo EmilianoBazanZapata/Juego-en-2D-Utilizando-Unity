@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public static PlayerController SharedInstance;
     //variable para almacenar la posicion del personaje
     private UnityEngine.Vector3 StartPosition;
+    
+    private int HealtPoints, ManaPoints;
 
     private void Awake()
     {
@@ -33,6 +35,8 @@ public class PlayerController : MonoBehaviour
         AnimatorPlayer.SetBool("IsGrounded", true);
         //asigno la posicion inicial del personaje cada vez que reinciamos el juego
         this.transform.position = StartPosition;
+        HealtPoints = 50;
+        ManaPoints = 50;
     }
 
     // Update is called once per frame
@@ -119,5 +123,24 @@ public class PlayerController : MonoBehaviour
                                                               //final
                                                               new UnityEngine.Vector2(this.transform.position.x, 0));
         return TraveledDistance;//this.transfomr.x - startposition.x
+    }
+    //metodo para aumentar la vida
+    public void CollectHealt(int points)
+    {
+        this.HealtPoints += points;
+        if(HealtPoints >= 100)
+        {
+            this.HealtPoints = 100;
+        }
+        
+    }
+    //metodo para aumentar el mana
+    public void CollectMana(int points)
+    {
+        this.ManaPoints += points;
+        if(this.ManaPoints >=100)
+        {
+            this.ManaPoints  = 100;
+        }
     }
 }
