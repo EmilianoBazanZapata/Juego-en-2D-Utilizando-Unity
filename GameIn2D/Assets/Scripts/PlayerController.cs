@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
     
     private int HealtPoints, ManaPoints;
 
+    //variables constantes
+    private const int INITIAL_HEALT = 100, INITIAL_MANA = 25 , MAX_HEALTH = 100, MAX_MANA = 100 , MIN_HEALTH = 15;
+    private const float MIN_SPEED = 2.5f , HEALT_TIME_DECRASE = 3.5f ;
+
     private void Awake()
     {
         SharedInstance = this;
@@ -36,17 +40,17 @@ public class PlayerController : MonoBehaviour
         AnimatorPlayer.SetBool("IsGrounded", true);
         //asigno la posicion inicial del personaje cada vez que reinciamos el juego
         this.transform.position = StartPosition;
-        HealtPoints = 100;
-        ManaPoints = 50;
+        HealtPoints = INITIAL_HEALT;
+        ManaPoints = INITIAL_MANA;
         StartCoroutine("TirePlayer");
     }
     //corrutina para restar vida al jugador
     IEnumerator TirePlayer()
     {
-        while(this.HealtPoints > 15)
+        while(this.HealtPoints > MIN_HEALTH)
         {
             this.HealtPoints --;
-            yield return new  WaitForSeconds(3.5f);
+            yield return new  WaitForSeconds(HEALT_TIME_DECRASE);
         }
         yield return null;
     }
@@ -73,7 +77,7 @@ public class PlayerController : MonoBehaviour
         //Solo se podra mover si el Modo de Juego es InGame
         if (GameManager.SharedInstance.CurrentGameState == GameState.InGame)
         {
-            float CurrentSpeed = (WalkSpeed - 1.5f) * this.HealtPoints / 100.0f;
+            float CurrentSpeed = (WalkSpeed - MIN_SPEED) * this.HealtPoints / 100.0f;
             //UnityEngine.Debug.Log(CurrentSpeed);
             if (Input.GetButton("HorizontalPositive"))
             {
@@ -130,6 +134,7 @@ public class PlayerController : MonoBehaviour
             //si la distancia al morir es mayor que 0 tenemos un nuevo record
             PlayerPrefs.SetFloat("MaxDistance", this.GetDistance());
         }
+        StopCoroutine("TirePlayer");
     }
     //metodo para calcular la distancia recorrida
     public float GetDistance()
@@ -143,9 +148,9 @@ public class PlayerController : MonoBehaviour
     public void CollectHealt(int points)
     {
         this.HealtPoints += points;
-        if(HealtPoints >= 100)
+        if(HealtPoints >= MAX_HEALTH)
         {
-            this.HealtPoints = 100;
+            this.HealtPoints = MAX_HEALTH;
         }
         
     }
@@ -153,9 +158,9 @@ public class PlayerController : MonoBehaviour
     public void CollectMana(int points)
     {
         this.ManaPoints += points;
-        if(this.ManaPoints >=100)
+        if(this.ManaPoints >= MAX_MANA)
         {
-            this.ManaPoints  = 100;
+            this.ManaPoints  = MAX_MANA;
         }
     }
 
