@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     //fuerza de salto
     public float JumpForce = 5f;
+    public float SuperJumpForce = 8f;
     //rigidbody del personaje que usare para saltar
     private Rigidbody2D rigidBody;
     //variable para detectar la capa del suelo
@@ -66,6 +67,11 @@ public class PlayerController : MonoBehaviour
                 //aqi el usuario acaba de pulsar la tecla espacio
                 Jump();
             }
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                //aqi el usuario acaba de pulsar la tecla espacio
+                SuperJump();
+            }
             AnimatorPlayer.SetBool("IsGrounded", IsTouchingTheGround());
         }
     }
@@ -107,6 +113,16 @@ public class PlayerController : MonoBehaviour
         {
 
             rigidBody.AddForce(UnityEngine.Vector2.up * JumpForce, ForceMode2D.Impulse);
+        }
+    }
+    private void SuperJump()
+    {
+        //f = m * a
+
+        if (IsTouchingTheGround() == true)
+        {
+
+            rigidBody.AddForce(UnityEngine.Vector2.up * SuperJumpForce, ForceMode2D.Impulse);
         }
     }
 
