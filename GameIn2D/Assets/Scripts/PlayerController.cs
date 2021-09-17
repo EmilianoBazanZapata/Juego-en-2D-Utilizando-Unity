@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
     private int HealtPoints, ManaPoints;
 
     //variables constantes
-    private const int INITIAL_HEALT = 100, INITIAL_MANA = 25, MAX_HEALTH = 100, MAX_MANA = 100, MIN_HEALTH = 15;
-    private const float MIN_SPEED = 2.5f, HEALT_TIME_DECRASE = 3.5f;
+    private const int INITIAL_HEALT = 100, INITIAL_MANA = 25, MAX_HEALTH = 100, MAX_MANA = 100, MIN_HEALTH = 15, MIN_MANA = 0 , MANA_DECRASE = 5;
+    private const float MIN_SPEED = 2.5f, HEALT_TIME_DECRASE = 3.5f , MANA_TIME_DECRASE = 10f;
 
     private void Awake()
     {
@@ -44,16 +44,6 @@ public class PlayerController : MonoBehaviour
         HealtPoints = INITIAL_HEALT;
         ManaPoints = INITIAL_MANA;
         StartCoroutine("TirePlayer");
-    }
-    //corrutina para restar vida al jugador
-    IEnumerator TirePlayer()
-    {
-        while (this.HealtPoints > MIN_HEALTH)
-        {
-            this.HealtPoints--;
-            yield return new WaitForSeconds(HEALT_TIME_DECRASE);
-        }
-        yield return null;
     }
 
     // Update is called once per frame
@@ -105,11 +95,13 @@ public class PlayerController : MonoBehaviour
             SuperRun();
         }
     }
+    //metodo para que el jugador pueda correr
     private void SuperRun()
     {
-        if (Input.GetButton("SuperRun"))
+        if (Input.GetButton("SuperRun") && ManaPoints > 0)
         {
             this.WalkSpeed = 6.0f;
+            StartCoroutine("RemoveMana");
         }
         else
         {
@@ -126,14 +118,16 @@ public class PlayerController : MonoBehaviour
             rigidBody.AddForce(UnityEngine.Vector2.up * JumpForce, ForceMode2D.Impulse);
         }
     }
+    //super salto 
     private void SuperJump()
     {
         //f = m * a
 
-        if (IsTouchingTheGround() == true)
+        if (IsTouchingTheGround() == true && ManaPoints > 0)
         {
 
             rigidBody.AddForce(UnityEngine.Vector2.up * SuperJumpForce, ForceMode2D.Impulse);
+            this.ManaPoints -= MANA_DECRASE;
         }
     }
 
@@ -200,5 +194,26 @@ public class PlayerController : MonoBehaviour
     public int GetMana()
     {
         return this.ManaPoints;
+        StopCoroutine("RemoveMana");
+    }
+    //corrutina para restar vida al jugador
+    IEnumerator TirePlayer()
+    {
+        while (this.HealtPoints > MIN_HEALTH)
+        {
+            this.HealtPoints--;
+            yield return new WaitForSeconds(HEALT_TIME_DECRASE);
+        }
+        yield return null;
+    }
+    //corrutina para disminuir el mana del jugador
+    IEnumerator RemoveMana()
+    {
+        while (this.ManaPoints > MIN_MANA)
+        {
+            this.ManaPoints--;
+            yield return new WaitForSeconds(MANA_TIME_DECRASE);
+        }
+        yield return null;
     }
 }

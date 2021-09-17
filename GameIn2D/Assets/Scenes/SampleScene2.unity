@@ -1964,6 +1964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpForce: 6
+  SuperJumpForce: 8
   GroundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -3024,12 +3025,12 @@ PrefabInstance:
     - target: {fileID: 7575784734909124151, guid: 38a640951f7186f4ba3b2f5cf7455ab8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.19
+      value: -13.185
       objectReference: {fileID: 0}
     - target: {fileID: 7575784734909124151, guid: 38a640951f7186f4ba3b2f5cf7455ab8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: -0.19
       objectReference: {fileID: 0}
     - target: {fileID: 7575784734909124151, guid: 38a640951f7186f4ba3b2f5cf7455ab8,
         type: 3}
