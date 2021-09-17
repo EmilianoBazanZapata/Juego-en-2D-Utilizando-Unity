@@ -129,6 +129,7 @@ public class PlayerController : MonoBehaviour
             rigidBody.AddForce(UnityEngine.Vector2.up * SuperJumpForce, ForceMode2D.Impulse);
             this.ManaPoints -= MANA_DECRASE;
         }
+        StopCoroutine("RemoveMana");
     }
 
     //metodo para validar si el personaje toca el suelo o no
