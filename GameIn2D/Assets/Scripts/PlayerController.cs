@@ -21,12 +21,12 @@ public class PlayerController : MonoBehaviour
     public static PlayerController SharedInstance;
     //variable para almacenar la posicion del personaje
     private UnityEngine.Vector3 StartPosition;
-    
+
     private int HealtPoints, ManaPoints;
 
     //variables constantes
-    private const int INITIAL_HEALT = 100, INITIAL_MANA = 25 , MAX_HEALTH = 100, MAX_MANA = 100 , MIN_HEALTH = 15;
-    private const float MIN_SPEED = 2.5f , HEALT_TIME_DECRASE = 3.5f ;
+    private const int INITIAL_HEALT = 100, INITIAL_MANA = 25, MAX_HEALTH = 100, MAX_MANA = 100, MIN_HEALTH = 15;
+    private const float MIN_SPEED = 2.5f, HEALT_TIME_DECRASE = 3.5f;
 
     private void Awake()
     {
@@ -48,10 +48,10 @@ public class PlayerController : MonoBehaviour
     //corrutina para restar vida al jugador
     IEnumerator TirePlayer()
     {
-        while(this.HealtPoints > MIN_HEALTH)
+        while (this.HealtPoints > MIN_HEALTH)
         {
-            this.HealtPoints --;
-            yield return new  WaitForSeconds(HEALT_TIME_DECRASE);
+            this.HealtPoints--;
+            yield return new WaitForSeconds(HEALT_TIME_DECRASE);
         }
         yield return null;
     }
@@ -89,22 +89,33 @@ public class PlayerController : MonoBehaviour
             {
                 if (rigidBody.velocity.x < CurrentSpeed)
                 {
-                    
+
                     rigidBody.velocity = new UnityEngine.Vector2(CurrentSpeed, rigidBody.velocity.y);
                     transform.localScale = new UnityEngine.Vector2(1, 1);
                 }
             }
             if (Input.GetButton("HorizontalNegative"))
             {
-                if (rigidBody.velocity.x > - CurrentSpeed)
+                if (rigidBody.velocity.x > -CurrentSpeed)
                 {
-                    rigidBody.velocity = new UnityEngine.Vector2( - CurrentSpeed, rigidBody.velocity.y);
+                    rigidBody.velocity = new UnityEngine.Vector2(-CurrentSpeed, rigidBody.velocity.y);
                     transform.localScale = new UnityEngine.Vector2(-1, 1);
                 }
             }
+            SuperRun();
         }
     }
-
+    private void SuperRun()
+    {
+        if (Input.GetButton("SuperRun"))
+        {
+            this.WalkSpeed = 6.0f;
+        }
+        else
+        {
+            this.WalkSpeed = 4.0f;
+        }
+    }
     private void Jump()
     {
         //f = m * a
@@ -164,19 +175,19 @@ public class PlayerController : MonoBehaviour
     public void CollectHealt(int points)
     {
         this.HealtPoints += points;
-        if(HealtPoints >= MAX_HEALTH)
+        if (HealtPoints >= MAX_HEALTH)
         {
             this.HealtPoints = MAX_HEALTH;
         }
-        
+
     }
     //metodo para aumentar el mana
     public void CollectMana(int points)
     {
         this.ManaPoints += points;
-        if(this.ManaPoints >= MAX_MANA)
+        if (this.ManaPoints >= MAX_MANA)
         {
-            this.ManaPoints  = MAX_MANA;
+            this.ManaPoints = MAX_MANA;
         }
     }
 
