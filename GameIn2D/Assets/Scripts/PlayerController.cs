@@ -217,4 +217,14 @@ public class PlayerController : MonoBehaviour
         }
         yield return null;
     }
+    private void OnTriggerEnter2D(Collider2D otherCollider) {
+        if(otherCollider.tag == "Enemy")
+        {
+            this.HealtPoints -= 20;
+        }
+        if(this.HealtPoints <=0)
+        {
+            Kill();
+        }
+    }
 }

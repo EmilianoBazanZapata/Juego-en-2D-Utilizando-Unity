@@ -51,19 +51,20 @@ public class Collectable : MonoBehaviour
         if (other.tag == "King")
         {
             Collect();
-        }
-        //pasamos el valor de loa moneda al metodo contador 
-        switch (this.Type)
-        {
-            case CollectableType.Money:
-                GameManager.SharedInstance.CollectObject(value);
-                break;
-            case CollectableType.HealtPotion:
-                PlayerController.SharedInstance.CollectHealt(value);
-                break;
-             case CollectableType.ManaPotion:
-                PlayerController.SharedInstance.CollectMana(value);
-                break;
+            //pasamos el valor de loa moneda al metodo contador 
+            switch (this.Type)
+            {
+                case CollectableType.Money:
+                    GameManager.SharedInstance.CollectObject(value);
+                    break;
+                case CollectableType.HealtPotion:
+                    PlayerController.SharedInstance.CollectHealt(value);
+                    break;
+                case CollectableType.ManaPotion:
+                    PlayerController.SharedInstance.CollectMana(value);
+                    break;
+            }
+
         }
 
     }

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - King
   - Cellectable
+  - Potion
+  - Enemy
+  - Limit
   layers:
   - Default
   - TransparentFX
