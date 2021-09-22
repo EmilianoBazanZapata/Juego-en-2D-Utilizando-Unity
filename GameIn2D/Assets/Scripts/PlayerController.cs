@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
     {
         //f = m * a
 
-        if (IsTouchingTheGround() == true)
+        if (IsTouchingTheGround() == true && GameManager.SharedInstance.CurrentGameState == GameState.InGame)
         {
 
             rigidBody.AddForce(UnityEngine.Vector2.up * JumpForce, ForceMode2D.Impulse);
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
     {
         //f = m * a
 
-        if (IsTouchingTheGround() == true && ManaPoints > 0)
+        if (IsTouchingTheGround() == true && ManaPoints > 0  && GameManager.SharedInstance.CurrentGameState == GameState.InGame)
         {
 
             rigidBody.AddForce(UnityEngine.Vector2.up * SuperJumpForce, ForceMode2D.Impulse);
@@ -217,6 +217,7 @@ public class PlayerController : MonoBehaviour
         }
         yield return null;
     }
+    //metodo que usare cuando el enemigo toque al jugador
     private void OnTriggerEnter2D(Collider2D otherCollider) {
         if(otherCollider.tag == "Enemy")
         {

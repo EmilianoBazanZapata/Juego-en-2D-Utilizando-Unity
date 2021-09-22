@@ -6,7 +6,10 @@ public class LeaveZone : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        LevelGenerator.SharedInstance.AddLevelBlock();
-        LevelGenerator.SharedInstance.RemoveLevelBlock();
+        if (collision.tag == "King")
+        {
+            LevelGenerator.SharedInstance.AddLevelBlock();
+            LevelGenerator.SharedInstance.RemoveLevelBlock();
+        }
     }
 }
