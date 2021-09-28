@@ -11,11 +11,13 @@ public class BrilloManager : MonoBehaviour
     public float sliderValue;
     //hace referencia al canvas , el cual le cambiare el alfa
     public Image panelBrillo;
+    public Image ImageOptions ;
     private void Start() {
         //agregare el brillo por defecto
         slider.value = PlayerPrefs.GetFloat("Brillo",0.5f);
         //pasare el valor del alfa gracias al slider
-        panelBrillo.color = new Color(panelBrillo.color.r , panelBrillo.color.g , panelBrillo.color.b , slider.value); 
+        panelBrillo.color = new Color(panelBrillo.color.r , panelBrillo.color.g , panelBrillo.color.b , slider.value);
+        ImageOptions.color = new Color(panelBrillo.color.r , panelBrillo.color.g , panelBrillo.color.b , slider.value);
     }
     public void ChangeSlider(float valor)
     {
@@ -25,6 +27,7 @@ public class BrilloManager : MonoBehaviour
         PlayerPrefs.SetFloat("Brillo",sliderValue);
         //cambio el brillo
         panelBrillo.color = new Color(panelBrillo.color.r , panelBrillo.color.g , panelBrillo.color.b , slider.value); 
+        ImageOptions.color = new Color(panelBrillo.color.r , panelBrillo.color.g , panelBrillo.color.b , slider.value); 
     }
 
 }
