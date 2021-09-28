@@ -18,9 +18,11 @@ public class VolumenManager : MonoBehaviour
     }
     public void ChangeSlider(float valor)
     {
+        //pasmos el valor que pasare por el slider
         sliderValue = valor;
+        //actualizamos el valor de la musica por defecto
         PlayerPrefs.SetFloat("VolumenAudio",sliderValue);
+        //el audio general se vera afectado por el slider
         AudioListener.volume = slider.value;
     }
-
 }
