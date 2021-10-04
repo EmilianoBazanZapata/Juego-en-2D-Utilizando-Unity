@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-C:/Users/Emiliano/Downloads/GameIn2D.exe
+C:/Users/Emiliano/Desktop/juego/GameIn2D.exe
 SceneListBegin?
 Assets/Scenes/SampleScene2.unity
 SceneListEnd?
@@ -120,10 +120,12 @@ b8a5e8091ab0b8861d2add371082c5e0 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 f31ec7672d0a288057b49cb14a29d7de Assembly-CSharp.dll:.LevelBlock
 7ddb798a53aede732b8f9a6f697090a5 Assembly-CSharp.dll:.CameraFollow
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
+595dbcde3b98b5fa47d1a459611bdfb0 Assembly-CSharp.dll:.QualityManager
+4c32c3b47b64a931e46baa3d9049269f Assembly-CSharp.dll:.VolumenManager
 1f74ed43dcd4b6debc2d1978f9f32eba Assembly-CSharp.dll:.PlayerBar
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
-11db144a497b1374f98ac06fe5fd17c2 Assembly-CSharp.dll:.GameManager
+4a465be27a8bf86c2b324c4cac0e2094 Assembly-CSharp.dll:.GameManager
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 1dcb82730d983b77cec736c6ef19f814 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -138,6 +140,7 @@ e0ee4b3d4e27318934cc940a969d3d96 UnityEngine.Networking.dll:UnityEngine.Networki
 ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 9b895dcabbc1faf095c000c32d471fd0 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
+2a6182ccde5e3566d91bed12c0a2b7ff Assembly-CSharp.dll:.BrilloManager
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.KillZone
 35a9693c388776aaf487636491a20f11 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 e1300922cc039f41ab46a47f4cb05898 Unity.TextMeshPro.dll:TMPro.TMP_Settings
@@ -156,6 +159,7 @@ fb6a1ea36b4f6ef5948d283d93760765 UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 fb6a1ea36b4f6ef5948d283d93760765 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSourceExtension
+9f830359d982ed4f9603a0d2251d14e6 Assembly-CSharp.dll:.ScreenManager
 3b760e6526e13f7504f59e210145899a Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 507174d46dacbc5fe45e28485db5dd1e Unity.Analytics.DataPrivacy.dll:UnityEngine.Analytics.DataPrivacyButton
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
