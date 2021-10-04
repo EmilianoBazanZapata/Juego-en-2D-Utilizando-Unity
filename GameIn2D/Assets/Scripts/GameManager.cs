@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour
             GameOverCanvas.enabled = false;
             PauseCanvas.enabled = false;
             OptionsCanvas.enabled = false;
+            Time.timeScale = 1;
         }
         else if (NewGameState == GameState.InGame)
         {
@@ -138,6 +139,7 @@ public class GameManager : MonoBehaviour
             GameOverCanvas.enabled = false;
             PauseCanvas.enabled = false;
             OptionsCanvas.enabled = false;
+            Time.timeScale = 1;
         }
         else if (NewGameState == GameState.GameOver)
         {
@@ -147,6 +149,7 @@ public class GameManager : MonoBehaviour
             GameOverCanvas.enabled = true;
             PauseCanvas.enabled = false;
             OptionsCanvas.enabled = false;
+            Time.timeScale = 0;
         }
         else if(NewGameState == GameState.Pause)
         {
@@ -156,6 +159,11 @@ public class GameManager : MonoBehaviour
             GameOverCanvas.enabled = false;
             PauseCanvas.enabled = true;
             OptionsCanvas.enabled = false;
+#if UNITY_EDITOR
+            Time.timeScale = 0;
+#else
+            Time.timeScale = 1;
+            #endif
         }
         else if(NewGameState == GameState.Options)
         {
@@ -165,6 +173,11 @@ public class GameManager : MonoBehaviour
             GameOverCanvas.enabled = false;
             PauseCanvas.enabled = false;
             OptionsCanvas.enabled = true;
+#if UNITY_EDITOR
+            Time.timeScale = 0;
+#else
+            Time.timeScale = 1;
+            #endif
         }
 
         //asignamos el estado de juego actual desde el parametro

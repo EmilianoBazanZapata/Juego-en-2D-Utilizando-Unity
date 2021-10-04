@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
         float currentRunningSpeed = runningSpeed;
-
+        
         if (turnAround == true)
         {
             //aquí la velocidad es positiva...
@@ -31,10 +31,11 @@ public class Enemy : MonoBehaviour
             currentRunningSpeed = -runningSpeed;
             this.transform.eulerAngles = new Vector3(0, 180.0F, 0);
         }
-
         if (GameManager.SharedInstance.CurrentGameState == GameState.InGame)
         {
             rigidBody.velocity = new Vector2(currentRunningSpeed, rigidBody.velocity.y);
         }
+
+
     }
 }

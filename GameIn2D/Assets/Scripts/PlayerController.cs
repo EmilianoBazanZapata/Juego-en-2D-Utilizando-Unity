@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private int HealtPoints, ManaPoints;
 
     //variables constantes
-    private const int INITIAL_HEALT = 100, INITIAL_MANA = 25, MAX_HEALTH = 100, MAX_MANA = 100, MIN_HEALTH = 15, MIN_MANA = 0 , MANA_DECRASE = 5;
+    private const int INITIAL_HEALT = 100, INITIAL_MANA = 75, MAX_HEALTH = 100, MAX_MANA = 100, MIN_HEALTH = 45, MIN_MANA = 0 , MANA_DECRASE = 5;
     private const float MIN_SPEED = 2.5f, HEALT_TIME_DECRASE = 3.5f , MANA_TIME_DECRASE = 10f;
 
     private void Awake()
