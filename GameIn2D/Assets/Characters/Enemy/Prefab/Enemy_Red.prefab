@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 95804364767666852}
   - component: {fileID: 61549916702252722}
   - component: {fileID: 50302527479412886}
-  - component: {fileID: 1993639320236595341}
-  - component: {fileID: 5376057512564911086}
+  - component: {fileID: 1158019763796709103}
+  - component: {fileID: 7126590931621238496}
   m_Layer: 0
   m_Name: Enemy_Red
   m_TagString: Enemy
@@ -151,20 +151,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 2
---- !u!114 &1993639320236595341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1972614166073107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a38423fb8c49d947bc42b873d3c8cc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runningSpeed: 2
---- !u!114 &5376057512564911086
+--- !u!114 &1158019763796709103
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,6 +164,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingForward: 1
+--- !u!114 &7126590931621238496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972614166073107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a38423fb8c49d947bc42b873d3c8cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runningSpeed: 2
 --- !u!1 &7755586635499927624
 GameObject:
   m_ObjectHideFlags: 0

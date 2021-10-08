@@ -159,25 +159,19 @@ public class GameManager : MonoBehaviour
             GameOverCanvas.enabled = false;
             PauseCanvas.enabled = true;
             OptionsCanvas.enabled = false;
-#if UNITY_EDITOR
             Time.timeScale = 0;
-#else
-            Time.timeScale = 1;
-            #endif
+
         }
         else if(NewGameState == GameState.Options)
         {
             //codigo para mostrar el menu de pausa
             MenuCanvas.enabled = false;
             GameCanvas.enabled = false;
+            GameCanvas.enabled = false;
             GameOverCanvas.enabled = false;
             PauseCanvas.enabled = false;
             OptionsCanvas.enabled = true;
-#if UNITY_EDITOR
             Time.timeScale = 0;
-#else
-            Time.timeScale = 1;
-            #endif
         }
 
         //asignamos el estado de juego actual desde el parametro
