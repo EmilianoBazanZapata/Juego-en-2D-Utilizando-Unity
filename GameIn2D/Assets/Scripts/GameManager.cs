@@ -6,13 +6,14 @@ using UnityEngine;
 
 //enumerado
 //posibles estado del juego
-public enum GameState 
+public enum GameState
 {
     Menu,
     InGame,
     GameOver,
     Pause,
-    Options
+    Options,
+    OptionsGame
 }
 
 public class GameManager : MonoBehaviour
@@ -31,8 +32,10 @@ public class GameManager : MonoBehaviour
     public Canvas GameOverCanvas;
     //referencia la canvas de pausa
     public Canvas PauseCanvas;
-    //referencia la canvas de Opciones
-    public Canvas OptionsCanvas;
+    //referencia la canvas de Opciones en el menu
+    public Canvas OptionsMenuCanvas;
+    //referencia la canvas de Opciones en el juego
+    public Canvas OptionsGameCanvas;
     //cantidad de coleccionales recogidos
     public float CollectedObjects = 0;
 
@@ -52,7 +55,7 @@ public class GameManager : MonoBehaviour
         }*/
         if (Input.GetButton("Pause"))
         {
-           Pause();
+            Pause();
         }
         // if (Input.GetButton("Restart") && CurrentGameState == GameState.GameOver)
         // {
@@ -68,7 +71,7 @@ public class GameManager : MonoBehaviour
         CameraFollow cameraFollow = camera.GetComponent<CameraFollow>();
         cameraFollow.ResetCameraPosition();
         //si el jugador no supera la distancia de 13 el primer bloque sera el mismo
-        if (PlayerController.SharedInstance.transform.position.x > 13) 
+        if (PlayerController.SharedInstance.transform.position.x > 13)
         {
             LevelGenerator.SharedInstance.RemoveAllTheBlock();
             LevelGenerator.SharedInstance.GenerateInitialBlock();
@@ -79,24 +82,32 @@ public class GameManager : MonoBehaviour
 
     }
     //metodo para reiniciar el juego
-    public void RestartGame() 
+    public void RestartGame()
     {
         SetGameState(GameState.InGame);
         PlayerController.SharedInstance.StartGame();
     }
     //metodo que se llamara al morir
-    public void GameOver() 
+    public void GameOver()
     {
         SetGameState(GameState.GameOver);
     }
     //metodo que llamara para volver al menu
-    public void BackToMenu() 
+    public void BackToMenu()
     {
         SetGameState(GameState.Menu);
     }
+    //metodo que llamare para volver al juego desde las Opciones
+    public void BackToGame()
+    {
+        SetGameState(GameState.InGame);
+    }
     public void Pause()
     {
-        SetGameState(GameState.Pause);
+        if (CurrentGameState != GameState.GameOver && CurrentGameState != GameState.Menu)
+        {
+            SetGameState(GameState.Pause);
+        }
     }
     //metodo para continuar el juego
     public void ContinueGame()
@@ -106,21 +117,26 @@ public class GameManager : MonoBehaviour
     //metodo para entrar al menu del juego
     public void OptionGame()
     {
+        SetGameState(GameState.OptionsGame);
+    }
+    //metodo para entrar al menu del juego desde el menu de inicio
+    public void OptionGameInMenu()
+    {
         SetGameState(GameState.Options);
     }
     //metodo para finalizar la aplicacion
     public void QuitGame()
     {
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#else
         Application.Quit();
-        #endif
+#endif
     }
     //metodo encargado de cambiar el estado del juego
-    private void SetGameState(GameState NewGameState) 
+    private void SetGameState(GameState NewGameState)
     {
-        if (NewGameState == GameState.Menu) 
+        if (NewGameState == GameState.Menu)
         {
             //codigo para mostrar el menu
             //aqui activare el canvas
@@ -128,7 +144,8 @@ public class GameManager : MonoBehaviour
             GameCanvas.enabled = false;
             GameOverCanvas.enabled = false;
             PauseCanvas.enabled = false;
-            OptionsCanvas.enabled = false;
+            OptionsMenuCanvas.enabled = false;
+            OptionsGameCanvas.enabled = false;
             Time.timeScale = 1;
         }
         else if (NewGameState == GameState.InGame)
@@ -138,7 +155,8 @@ public class GameManager : MonoBehaviour
             GameCanvas.enabled = true;
             GameOverCanvas.enabled = false;
             PauseCanvas.enabled = false;
-            OptionsCanvas.enabled = false;
+            OptionsMenuCanvas.enabled = false;
+            OptionsGameCanvas.enabled = false;
             Time.timeScale = 1;
         }
         else if (NewGameState == GameState.GameOver)
@@ -148,30 +166,44 @@ public class GameManager : MonoBehaviour
             GameCanvas.enabled = false;
             GameOverCanvas.enabled = true;
             PauseCanvas.enabled = false;
-            OptionsCanvas.enabled = false;
+            OptionsMenuCanvas.enabled = false;
+            OptionsGameCanvas.enabled = false;
             Time.timeScale = 0;
         }
-        else if(NewGameState == GameState.Pause)
+        else if (NewGameState == GameState.Pause)
         {
             //codigo para mostrar el menu de pausa
             MenuCanvas.enabled = false;
             GameCanvas.enabled = false;
             GameOverCanvas.enabled = false;
             PauseCanvas.enabled = true;
-            OptionsCanvas.enabled = false;
+            OptionsMenuCanvas.enabled = false;
+            OptionsGameCanvas.enabled = false;
             Time.timeScale = 0;
 
         }
-        else if(NewGameState == GameState.Options)
+        else if (NewGameState == GameState.Options)
         {
-            //codigo para mostrar el menu de pausa
+            //codigo para mostrar el menu de pausa desde las opciones desde el menu del juego
             MenuCanvas.enabled = false;
             GameCanvas.enabled = false;
             GameCanvas.enabled = false;
             GameOverCanvas.enabled = false;
             PauseCanvas.enabled = false;
-            OptionsCanvas.enabled = true;
+            OptionsMenuCanvas.enabled = true;
+            OptionsGameCanvas.enabled = false;
             Time.timeScale = 0;
+        }
+        else if (NewGameState == GameState.OptionsGame)
+        {
+            //codigo para mostrar el menu de pausa desde las opciones desde el juego
+            MenuCanvas.enabled = false;
+            GameCanvas.enabled = false;
+            GameCanvas.enabled = false;
+            GameOverCanvas.enabled = false;
+            PauseCanvas.enabled = false;
+            OptionsMenuCanvas.enabled = false;
+            OptionsGameCanvas.enabled = true;
         }
 
         //asignamos el estado de juego actual desde el parametro
