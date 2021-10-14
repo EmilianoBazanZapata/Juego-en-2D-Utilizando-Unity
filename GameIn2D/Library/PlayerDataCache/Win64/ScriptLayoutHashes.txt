@@ -125,7 +125,7 @@ b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 1f74ed43dcd4b6debc2d1978f9f32eba Assembly-CSharp.dll:.PlayerBar
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
-103bbb2c94fdf434256d1e506145f65b Assembly-CSharp.dll:.GameManager
+fb8956a3b046e481bb58e4c5bcf5163e Assembly-CSharp.dll:.GameManager
 87365608b94fd884b711f6c42d87d07a Assembly-CSharp.dll:.PlayRandomSound
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour

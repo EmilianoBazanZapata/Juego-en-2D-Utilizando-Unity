@@ -21,7 +21,6 @@ public class BrilloManager : MonoBehaviour
     }
     public void ChangeSlider(float valor)
     {
-        Debug.Log(valor);
         //pasare el valor del alfa gracias al slider
         sliderValue =  valor ;
         //actualizo el brillo
@@ -30,5 +29,4 @@ public class BrilloManager : MonoBehaviour
         panelBrillo.color = new Color(panelBrillo.color.r , panelBrillo.color.g , panelBrillo.color.b , slider.value); 
         ImageOptions.color = new Color(panelBrillo.color.r , panelBrillo.color.g , panelBrillo.color.b , slider.value); 
     }
-
 }

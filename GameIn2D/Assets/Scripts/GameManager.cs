@@ -34,8 +34,6 @@ public class GameManager : MonoBehaviour
     public Canvas PauseCanvas;
     //referencia la canvas de Opciones en el menu
     public Canvas OptionsMenuCanvas;
-    //referencia la canvas de Opciones en el juego
-    public Canvas OptionsGameCanvas;
     //cantidad de coleccionales recogidos
     public float CollectedObjects = 0;
 
