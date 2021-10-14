@@ -12,12 +12,12 @@ public enum GameState
     InGame,
     GameOver,
     Pause,
-    Options,
-    OptionsGame
+    Options
 }
 
 public class GameManager : MonoBehaviour
 {
+    private bool EstadoPausa;
     //variable que hace referencia al manager
     public static GameManager SharedInstance;
 
@@ -91,11 +91,21 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         SetGameState(GameState.GameOver);
+        this.EstadoPausa = false;
     }
     //metodo que llamara para volver al menu
     public void BackToMenu()
     {
-        SetGameState(GameState.Menu);
+        //UnityEngine.Debug.Log(EstadoPausa);
+        if (this.EstadoPausa == true)
+        {
+            Pause();
+        }
+        else
+        {
+            SetGameState(GameState.Menu);
+        }
+        //UnityEngine.Debug.Log(EstadoPausa);
     }
     //metodo que llamare para volver al juego desde las Opciones
     public void BackToGame()
@@ -107,17 +117,13 @@ public class GameManager : MonoBehaviour
         if (CurrentGameState != GameState.GameOver && CurrentGameState != GameState.Menu)
         {
             SetGameState(GameState.Pause);
+            this.EstadoPausa = true;
         }
     }
     //metodo para continuar el juego
     public void ContinueGame()
     {
         SetGameState(GameState.InGame);
-    }
-    //metodo para entrar al menu del juego
-    public void OptionGame()
-    {
-        SetGameState(GameState.OptionsGame);
     }
     //metodo para entrar al menu del juego desde el menu de inicio
     public void OptionGameInMenu()
@@ -145,7 +151,6 @@ public class GameManager : MonoBehaviour
             GameOverCanvas.enabled = false;
             PauseCanvas.enabled = false;
             OptionsMenuCanvas.enabled = false;
-            OptionsGameCanvas.enabled = false;
             Time.timeScale = 1;
         }
         else if (NewGameState == GameState.InGame)
@@ -156,8 +161,8 @@ public class GameManager : MonoBehaviour
             GameOverCanvas.enabled = false;
             PauseCanvas.enabled = false;
             OptionsMenuCanvas.enabled = false;
-            OptionsGameCanvas.enabled = false;
             Time.timeScale = 1;
+            this.EstadoPausa = true;
         }
         else if (NewGameState == GameState.GameOver)
         {
@@ -167,7 +172,6 @@ public class GameManager : MonoBehaviour
             GameOverCanvas.enabled = true;
             PauseCanvas.enabled = false;
             OptionsMenuCanvas.enabled = false;
-            OptionsGameCanvas.enabled = false;
             Time.timeScale = 0;
         }
         else if (NewGameState == GameState.Pause)
@@ -178,9 +182,7 @@ public class GameManager : MonoBehaviour
             GameOverCanvas.enabled = false;
             PauseCanvas.enabled = true;
             OptionsMenuCanvas.enabled = false;
-            OptionsGameCanvas.enabled = false;
             Time.timeScale = 0;
-
         }
         else if (NewGameState == GameState.Options)
         {
@@ -191,21 +193,8 @@ public class GameManager : MonoBehaviour
             GameOverCanvas.enabled = false;
             PauseCanvas.enabled = false;
             OptionsMenuCanvas.enabled = true;
-            OptionsGameCanvas.enabled = false;
             Time.timeScale = 0;
         }
-        else if (NewGameState == GameState.OptionsGame)
-        {
-            //codigo para mostrar el menu de pausa desde las opciones desde el juego
-            MenuCanvas.enabled = false;
-            GameCanvas.enabled = false;
-            GameCanvas.enabled = false;
-            GameOverCanvas.enabled = false;
-            PauseCanvas.enabled = false;
-            OptionsMenuCanvas.enabled = false;
-            OptionsGameCanvas.enabled = true;
-        }
-
         //asignamos el estado de juego actual desde el parametro
         this.CurrentGameState = NewGameState;
     }

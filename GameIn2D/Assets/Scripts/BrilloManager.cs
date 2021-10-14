@@ -21,6 +21,7 @@ public class BrilloManager : MonoBehaviour
     }
     public void ChangeSlider(float valor)
     {
+        Debug.Log(valor);
         //pasare el valor del alfa gracias al slider
         sliderValue =  valor ;
         //actualizo el brillo
