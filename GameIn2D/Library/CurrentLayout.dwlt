@@ -138,7 +138,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 498}
   m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
-  controlID: 2111
+  controlID: 225
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 2112
+  controlID: 180
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 2113
+  controlID: 239
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -405,10 +405,10 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 108}
+      scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: defbffffb813000056140000a815000094160000b0160000
+      m_ExpandedIDs: defbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -464,9 +464,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 464.25757, y: 21.385574, z: -1.1854478}
+    m_Target: {x: 278.45795, y: 159.95647, z: -3.25}
     speed: 2
-    m_Value: {x: 464.25757, y: 21.385574, z: -1.1854478}
+    m_Value: {x: 278.45795, y: 159.95647, z: -3.25}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -498,9 +498,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 129.00125
+    m_Target: 341.8528
     speed: 2
-    m_Value: 129.00125
+    m_Value: 341.8528
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -614,20 +614,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sprites/Menu
+    - Assets/Sprites
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Sprites/Menu
+  - Assets/Sprites
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Emiliano\Desktop\Unity\Unity-2D\Juego-en-2D-Utilizando-Unity\GameIn2D
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 499}
-    m_SelectedIDs: 300b0000
-    m_LastClickedID: 2864
-    m_ExpandedIDs: 000000001c0a0000dc0a0000880b0000fe0b00000c0c00002c0c00003c0c0000c20e0000560f0000fa0f0000e41000004e1100006811000000ca9a3b
+    m_SelectedIDs: 020c0000
+    m_LastClickedID: 3074
+    m_ExpandedIDs: 000000001c0a0000dc0a0000880b0000020c0000100c0000300c0000400c0000c60e00005a0f0000fe0f0000e41000004e1100006811000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -655,7 +655,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000001c0a0000dc0a0000880b0000fe0b00000c0c00002c0c00003c0c0000c20e0000560f0000fa0f0000e41000004e1100006811000000ca9a3b
+    m_ExpandedIDs: 000000001c0a0000dc0a0000880b0000020c0000100c0000300c0000400c0000c60e00005a0f0000fe0f0000e41000004e1100006811000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

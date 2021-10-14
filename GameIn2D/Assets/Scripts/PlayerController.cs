@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
     private int HealtPoints, ManaPoints;
 
     //variables constantes
-    private const int INITIAL_HEALT = 100, INITIAL_MANA = 75, MAX_HEALTH = 100, MAX_MANA = 100, MIN_HEALTH = 45, MIN_MANA = 0 , MANA_DECRASE = 5;
-    private const float MIN_SPEED = 2.5f, HEALT_TIME_DECRASE = 3.5f , MANA_TIME_DECRASE = 10f;
+    private const int INITIAL_HEALT = 100, INITIAL_MANA = 75, MAX_HEALTH = 100, MAX_MANA = 100, MIN_HEALTH = 45, MIN_MANA = 0, MANA_DECRASE = 5;
+    private const float MIN_SPEED = 2.5f, HEALT_TIME_DECRASE = 3.5f, MANA_TIME_DECRASE = 10f;
 
     private void Awake()
     {
@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     public void StartGame()
     {
         AnimatorPlayer.SetBool("IsGrounded", true);
+        AnimatorPlayer.SetBool("Walk", false);
         //asigno la posicion inicial del personaje cada vez que reinciamos el juego
         this.transform.position = StartPosition;
         HealtPoints = INITIAL_HEALT;
@@ -82,6 +83,7 @@ public class PlayerController : MonoBehaviour
 
                     rigidBody.velocity = new UnityEngine.Vector2(CurrentSpeed, rigidBody.velocity.y);
                     transform.localScale = new UnityEngine.Vector2(1, 1);
+                    AnimatorPlayer.SetBool("Walk", true);
                 }
             }
             if (Input.GetButton("HorizontalNegative"))
@@ -90,7 +92,12 @@ public class PlayerController : MonoBehaviour
                 {
                     rigidBody.velocity = new UnityEngine.Vector2(-CurrentSpeed, rigidBody.velocity.y);
                     transform.localScale = new UnityEngine.Vector2(-1, 1);
+                    AnimatorPlayer.SetBool("Walk", true);
                 }
+            }
+            if (Input.GetButtonUp("HorizontalPositive") || Input.GetButtonUp("HorizontalNegative"))
+            {
+                AnimatorPlayer.SetBool("Walk", false);
             }
             SuperRun();
         }
@@ -123,7 +130,7 @@ public class PlayerController : MonoBehaviour
     {
         //f = m * a
 
-        if (IsTouchingTheGround() == true && ManaPoints > 0  && GameManager.SharedInstance.CurrentGameState == GameState.InGame)
+        if (IsTouchingTheGround() == true && ManaPoints > 0 && GameManager.SharedInstance.CurrentGameState == GameState.InGame)
         {
 
             rigidBody.AddForce(UnityEngine.Vector2.up * SuperJumpForce, ForceMode2D.Impulse);
@@ -218,12 +225,13 @@ public class PlayerController : MonoBehaviour
         yield return null;
     }
     //metodo que usare cuando el enemigo toque al jugador
-    private void OnTriggerEnter2D(Collider2D otherCollider) {
-        if(otherCollider.tag == "Enemy")
+    private void OnTriggerEnter2D(Collider2D otherCollider)
+    {
+        if (otherCollider.tag == "Enemy")
         {
             this.HealtPoints -= 20;
         }
-        if(this.HealtPoints <=0)
+        if (this.HealtPoints <= 0)
         {
             Kill();
         }
