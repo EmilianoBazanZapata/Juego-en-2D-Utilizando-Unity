@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    //primer bloque del nivel
+    //public GameObject firstBlock;
     public static LevelGenerator SharedInstance;
     public List<LevelBlock> AllTheLevelBlocks = new List<LevelBlock>();
     public Transform LevelStartPoint;
@@ -12,12 +14,14 @@ public class LevelGenerator : MonoBehaviour
     private void Awake()
     {
         SharedInstance = this;
+        //transform.position = new Vector3((float)-13.177, 0, 0);
+        //Instantiate(firstBlock, transform.position, transform.rotation);
     }
-    private void Start() 
+    private void Start()
     {
         GenerateInitialBlock();
     }
-    public void AddLevelBlock() 
+    public void AddLevelBlock()
     {
         //valor aleatorio entre 0 y la cantidad de niveles creados
         int RandomIndex = Random.Range(0, AllTheLevelBlocks.Count);
@@ -31,7 +35,7 @@ public class LevelGenerator : MonoBehaviour
         {
             SpawPosition = LevelStartPoint.position;
         }
-        else 
+        else
         {
             SpawPosition = CurrentBlocks[CurrentBlocks.Count - 1].ExitPoint.position;
         }
@@ -44,7 +48,7 @@ public class LevelGenerator : MonoBehaviour
         CurrentBlocks.Add(CurrentBlock);
 
     }
-    public void RemoveLevelBlock() 
+    public void RemoveLevelBlock()
     {
         //elimino el Bloque mas Viejo
         LevelBlock OldestBlock = CurrentBlocks[0];
@@ -53,13 +57,15 @@ public class LevelGenerator : MonoBehaviour
     }
     public void RemoveAllTheBlock()
     {
-        while (CurrentBlocks.Count > 0) 
+        while (CurrentBlocks.Count > 0)
         {
             RemoveLevelBlock();
         }
     }
-    public void GenerateInitialBlock() 
+    public void GenerateInitialBlock()
     {
+        //transform.position = new Vector3((float)-13.177, 0, 0);
+        //Instantiate(firstBlock, transform.position, transform.rotation);
         for (int i = 0; i < 4; i++)
         {
             AddLevelBlock();

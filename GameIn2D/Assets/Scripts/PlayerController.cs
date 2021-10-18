@@ -24,8 +24,10 @@ public class PlayerController : MonoBehaviour
 
     private int HealtPoints, ManaPoints;
 
+    public BoxCollider2D Collider2D;
+
     //variables constantes
-    private const int INITIAL_HEALT = 100, INITIAL_MANA = 75, MAX_HEALTH = 100, MAX_MANA = 100, MIN_HEALTH = 45, MIN_MANA = 0, MANA_DECRASE = 5;
+    private const int INITIAL_HEALT = 80, INITIAL_MANA = 80, MAX_HEALTH = 100, MAX_MANA = 100, MIN_HEALTH = 45, MIN_MANA = 0, MANA_DECRASE = 5;
     private const float MIN_SPEED = 2.5f, HEALT_TIME_DECRASE = 3.5f, MANA_TIME_DECRASE = 10f;
 
     private void Awake()
@@ -44,7 +46,7 @@ public class PlayerController : MonoBehaviour
         this.transform.position = StartPosition;
         HealtPoints = INITIAL_HEALT;
         ManaPoints = INITIAL_MANA;
-        StartCoroutine("TirePlayer");
+        //StartCoroutine("TirePlayer");
     }
 
     // Update is called once per frame
@@ -101,6 +103,14 @@ public class PlayerController : MonoBehaviour
             }
             SuperRun();
         }
+        if(IsTouchingTheGround())
+        {
+            Collider2D.enabled = true;
+        }
+        else
+        {
+            Collider2D.enabled = false;
+        }
     }
     //metodo para que el jugador pueda correr
     private void SuperRun()
@@ -122,7 +132,7 @@ public class PlayerController : MonoBehaviour
         if (IsTouchingTheGround() == true && GameManager.SharedInstance.CurrentGameState == GameState.InGame)
         {
 
-            rigidBody.AddForce(UnityEngine.Vector2.up * JumpForce, ForceMode2D.Impulse);
+            rigidBody.AddForce(UnityEngine.Vector2.up * JumpForce, ForceMode2D.Impulse);           
         }
     }
     //super salto 
@@ -163,7 +173,7 @@ public class PlayerController : MonoBehaviour
             //si la distancia al morir es mayor que 0 tenemos un nuevo record
             PlayerPrefs.SetFloat("MaxDistance", this.GetDistance());
         }
-        StopCoroutine("TirePlayer");
+        //StopCoroutine("TirePlayer");
     }
     //metodo para calcular la distancia recorrida
     public float GetDistance()
@@ -205,7 +215,7 @@ public class PlayerController : MonoBehaviour
         StopCoroutine("RemoveMana");
     }
     //corrutina para restar vida al jugador
-    IEnumerator TirePlayer()
+    /*IEnumerator TirePlayer()
     {
         while (this.HealtPoints > MIN_HEALTH)
         {
@@ -213,7 +223,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(HEALT_TIME_DECRASE);
         }
         yield return null;
-    }
+    }*/
     //corrutina para disminuir el mana del jugador
     IEnumerator RemoveMana()
     {

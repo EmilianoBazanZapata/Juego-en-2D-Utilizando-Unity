@@ -17,6 +17,9 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject firstBlock;
+    GameObject temp;
+
     private bool EstadoPausa;
     //variable que hace referencia al manager
     public static GameManager SharedInstance;
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour
     //cantidad de coleccionales recogidos
     public float CollectedObjects = 0;
 
+
     private void Awake()
     {
         SharedInstance = this;
@@ -44,36 +48,32 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         BackToMenu();
+
     }
     private void Update()
     {
-        /*if (Input.GetButton("Start"))
-        {
-            StartGame();
-        }*/
         if (Input.GetButton("Pause"))
         {
             Pause();
         }
-        // if (Input.GetButton("Restart") && CurrentGameState == GameState.GameOver)
-        // {
-        //     RestartGame();
-        // }
     }
     //metodo para iniciar el juego
     public void StartGame()
     {
+        //creo el primer bloque del nivel
+        transform.position = new Vector3((float)-13.177, 0, 0);
+        temp = Instantiate(firstBlock, transform.position, transform.rotation);
         SetGameState(GameState.InGame);
         //CameraFollow.SharedInstance.ResetCameraPosition();
         GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
         CameraFollow cameraFollow = camera.GetComponent<CameraFollow>();
         cameraFollow.ResetCameraPosition();
         //si el jugador no supera la distancia de 13 el primer bloque sera el mismo
-        if (PlayerController.SharedInstance.transform.position.x > 13)
-        {
-            LevelGenerator.SharedInstance.RemoveAllTheBlock();
-            LevelGenerator.SharedInstance.GenerateInitialBlock();
-        }
+        // (PlayerController.SharedInstance.transform.position.x > 13)
+        //{
+        LevelGenerator.SharedInstance.RemoveAllTheBlock();
+        LevelGenerator.SharedInstance.GenerateInitialBlock();
+        //}
         //despues de generar el bloque genero el jugador
         PlayerController.SharedInstance.StartGame();
         this.CollectedObjects = 0f;
@@ -84,12 +84,15 @@ public class GameManager : MonoBehaviour
     {
         SetGameState(GameState.InGame);
         PlayerController.SharedInstance.StartGame();
+        LevelGenerator.SharedInstance.GenerateInitialBlock();
     }
     //metodo que se llamara al morir
     public void GameOver()
     {
         SetGameState(GameState.GameOver);
         this.EstadoPausa = false;
+        LevelGenerator.SharedInstance.RemoveAllTheBlock();
+        Destroy(temp);
     }
     //metodo que llamara para volver al menu
     public void BackToMenu()

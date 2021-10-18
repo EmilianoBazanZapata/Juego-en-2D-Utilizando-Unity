@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\PlayRandomSound.cs" />
      <Compile Include="Assets\Scripts\QualityManager.cs" />
      <Compile Include="Assets\Scripts\ScreenManager.cs" />
+     <Compile Include="Assets\Scripts\StopBarCollider.cs" />
      <Compile Include="Assets\Scripts\TriggerMovement.cs" />
      <Compile Include="Assets\Scripts\ViewInGame.cs" />
      <Compile Include="Assets\Scripts\VolumenManager.cs" />
